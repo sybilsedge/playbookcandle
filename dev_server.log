@@ -18,3 +18,7 @@
 ┃ Local    http://localhost:4321/
 ┃ Network  use --host to expose
 20:20:15 watching for file changes...
+20:40:03 [watch] /src/styles/global.css
+20:40:06 [vite] [vite] program reload
+20:40:23 [watch] /src/styles/global.css
+20:40:42 [watch] /src/styles/global.css
