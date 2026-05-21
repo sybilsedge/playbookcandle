@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  theme?: "theme-modern" | "theme-chalkboard" | "theme-minimalist";
+}
+
+const {
+  title = "The Playbook Candle Co.",
+  description = "Tactical Scent Concepts for Game Day.",
+  theme = "theme-modern",
+} = Astro.props;
+
+const themeParam = Astro.url.searchParams.get("theme");
+const themeMap: Record<string, Props["theme"]> = {
+  modern: "theme-modern",
+  chalkboard: "theme-chalkboard",
+  minimalist: "theme-minimalist",
+};
+const resolvedTheme = (themeParam && themeMap[themeParam]) || theme;
+---
+
+<!doctype html>
+<html lang="en" class={resolvedTheme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <header class="playbook-line border-b border-line/70">
+        <div class="mx-auto w-full max-w-6xl px-6 py-4">
+          <p class="font-heading uppercase tracking-[0.2em] text-accent text-sm">The Playbook Candle Co.</p>
+        </div>
+      </header>
+      <main class="flex-1">
+        <slot />
+      </main>
+      <footer class="border-t border-line/70">
+        <div class="mx-auto w-full max-w-6xl px-6 py-4 text-sm text-muted">
+          Built for game-day rituals • Drawn up like a winning play
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

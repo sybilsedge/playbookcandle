@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export const prerender = true;
+---
+
+<BaseLayout title="The Playbook Candle Co." description="Tactical Scent Concepts for Game Day.">
+  <section class="mx-auto w-full max-w-6xl px-6 py-20">
+    <div class="max-w-3xl rounded-2xl border border-line/70 bg-surface/80 p-10 shadow-xl">
+      <p class="font-heading text-accent uppercase tracking-[0.25em] text-sm">Opening Drive</p>
+      <h1 class="mt-3 font-heading text-4xl md:text-6xl leading-tight">
+        The Playbook Candle Co.
+      </h1>
+      <p class="mt-4 text-lg text-muted">
+        Tactical Scent Concepts for Game Day.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3 text-sm">
+        <a href="/?theme=modern" class="rounded-full border border-line px-4 py-2 hover:border-accent">Modern Coordinator</a>
+        <a href="/?theme=chalkboard" class="rounded-full border border-line px-4 py-2 hover:border-accent">Friday Night Chalkboard</a>
+        <a href="/?theme=minimalist" class="rounded-full border border-line px-4 py-2 hover:border-accent">Gridiron Minimalist</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
