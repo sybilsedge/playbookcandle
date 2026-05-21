@@ -1,6 +1,6 @@
 {
-  "name": "sybilsedge",
-  "compatibility_date": "2026-04-06",
+  "name": "playbookcandle",
+  "compatibility_date": "2026-05-21",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./dist/_worker.js",
   "assets": {
