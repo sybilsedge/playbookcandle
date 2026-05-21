@@ -2,7 +2,6 @@
   "name": "playbookcandle",
   "compatibility_date": "2026-05-21",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "./dist/_worker.js",
   "assets": {
     "directory": "./dist"
   },
