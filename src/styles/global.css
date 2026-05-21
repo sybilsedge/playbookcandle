@@ -7,10 +7,10 @@
   --color-surface: #111827;
   --color-text: #e5e7eb;
   --color-muted: #9ca3af;
-  --color-accent: #7ee672;
+  --color-accent: #39ff14;
   --color-line: #374151;
-  --font-heading: "Tourney";
-  --font-body: "Oswald";
+  --font-heading: "JetBrains Mono";
+  --font-body: "Inter";
 }
 
 .theme-chalkboard {
@@ -29,10 +29,10 @@
   --color-surface: #22201e;
   --color-text: #f5f2ed;
   --color-muted: #d6d3d1;
-  --color-accent: #d6d4d0;
+  --color-accent: #b91c1c;
   --color-line: #78716c;
-  --font-heading: "Playfair Display";
-  --font-body: "Overpass";
+  --font-heading: "Space Grotesk";
+  --font-body: "Inter";
 }
 
 html,
@@ -46,9 +46,11 @@ body {
 }
 
 .playbook-line {
-  background-image: repeating-linear-gradient(90deg,
-      transparent 0,
-      transparent 18px,
-      var(--color-line) 18px,
-      var(--color-line) 19px);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 18px,
+    var(--color-line) 18px,
+    var(--color-line) 19px
+  );
 }

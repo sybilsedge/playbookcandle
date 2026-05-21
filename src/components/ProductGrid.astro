@@ -1,0 +1,25 @@
+---
+import { products } from "../data/products";
+import ProductCard from "./ProductCard.astro";
+---
+
+<section class="mx-auto w-full max-w-6xl px-6 py-12">
+  <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div>
+      <p class="font-heading text-accent uppercase tracking-[0.25em] text-sm">Active Roster</p>
+      <h2 class="mt-2 font-heading text-3xl uppercase">Current Deployment</h2>
+    </div>
+    <div class="flex gap-4 text-xs uppercase tracking-widest font-bold">
+      <span class="border-b-2 border-accent text-text pb-1 cursor-default">All Concepts</span>
+      <span class="text-muted pb-1 cursor-default">Classics</span>
+      <span class="text-muted pb-1 cursor-default">The Study</span>
+      <span class="text-muted pb-1 cursor-default">Special Teams</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {products.map((product) => (
+      <ProductCard product={product} />
+    ))}
+  </div>
+</section>

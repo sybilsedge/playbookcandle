@@ -1,0 +1,41 @@
+---
+import type { Product } from "../data/products";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<div class="group relative flex flex-col rounded-xl border border-line/70 bg-surface/50 p-6 transition-all hover:border-accent/50 hover:shadow-lg">
+  <div class="mb-4 aspect-square rounded-lg bg-bg/80 flex items-center justify-center border border-line/30 group-hover:border-accent/20 overflow-hidden">
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-5 playbook-line transition-opacity"></div>
+    <span class="text-[10px] uppercase tracking-[0.3em] text-muted group-hover:text-accent transition-colors font-heading">
+      Tactical Concept
+    </span>
+  </div>
+
+  <div class="flex justify-between items-start mb-1">
+    <h3 class="font-heading text-xl uppercase leading-none">{product.name}</h3>
+    <span class="font-heading text-accent">${product.price}</span>
+  </div>
+
+  <p class="text-[10px] font-bold uppercase tracking-widest text-muted mb-4">{product.category}</p>
+
+  <div class="space-y-4 flex-1">
+    <div>
+      <p class="text-[9px] uppercase tracking-[0.2em] text-accent/60 mb-1 font-bold">Scent Profile</p>
+      <p class="text-xs leading-relaxed opacity-90">{product.scentProfile}</p>
+    </div>
+
+    <div>
+      <p class="text-[9px] uppercase tracking-[0.2em] text-accent/60 mb-1 font-bold">Tactical Note</p>
+      <p class="text-xs italic text-muted leading-relaxed">{product.tacticalNote}</p>
+    </div>
+  </div>
+
+  <button type="button" class="mt-6 w-full rounded-lg border border-line py-3 text-[10px] uppercase tracking-[0.2em] transition-all hover:bg-accent hover:text-bg hover:border-accent font-bold active:scale-[0.98]">
+    Add to Playbook
+  </button>
+</div>

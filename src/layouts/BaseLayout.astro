@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 
 interface Props {
   title?: string;
@@ -22,7 +23,7 @@ const themeMap: Record<string, Props["theme"]> = {
 const resolvedTheme = (themeParam && themeMap[themeParam]) || theme;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class={resolvedTheme}>
   <head>
     <meta charset="UTF-8" />
@@ -31,20 +32,36 @@ const resolvedTheme = (themeParam && themeMap[themeParam]) || theme;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:wght@400;500;600;700&family=Overpass:wght@400;500;600;700&family=Oswald:wght@500;700&family=Playfair+Display:wght@500;700&family=Tourney:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap"
     />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <script is:inline>
+      // Apply theme immediately to prevent flash
+      const savedTheme = localStorage.getItem('playbook-theme');
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlTheme = urlParams.get('theme');
+
+      const themeToApply = urlTheme || savedTheme;
+
+      if (themeToApply) {
+        const themeMap = {
+          modern: 'theme-modern',
+          chalkboard: 'theme-chalkboard',
+          minimalist: 'theme-minimalist'
+        };
+        const themeClass = themeMap[themeToApply] || themeToApply;
+        if (Object.values(themeMap).includes(themeClass)) {
+          document.documentElement.className = themeClass;
+        }
+      }
+    </script>
   </head>
   <body>
     <div class="min-h-screen flex flex-col">
       <header class="playbook-line border-b border-line/70">
         <div class="mx-auto w-full max-w-6xl px-6 py-4">
-          <p
-            class="font-heading uppercase tracking-[0.2em] text-accent text-sm"
-          >
-            The Playbook Candle Co.
-          </p>
+          <p class="font-heading uppercase tracking-[0.2em] text-accent text-sm">The Playbook Candle Co.</p>
         </div>
       </header>
       <main class="flex-1">
@@ -56,5 +73,6 @@ const resolvedTheme = (themeParam && themeMap[themeParam]) || theme;
         </div>
       </footer>
     </div>
+    <ThemeSwitcher />
   </body>
 </html>
