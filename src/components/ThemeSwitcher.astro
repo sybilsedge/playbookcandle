@@ -1,0 +1,79 @@
+---
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full border border-line bg-surface/90 p-1.5 shadow-2xl backdrop-blur-md">
+  <button
+    data-theme-set="modern"
+    class="theme-btn flex items-center gap-2 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-white/5 active:scale-95"
+    title="Modern Coordinator"
+  >
+    <span class="h-3 w-3 rounded-full bg-[#39ff14] ring-2 ring-white/10"></span>
+    <span class="hidden sm:inline">Modern</span>
+  </button>
+
+  <button
+    data-theme-set="chalkboard"
+    class="theme-btn flex items-center gap-2 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-white/5 active:scale-95"
+    title="Friday Night Chalkboard"
+  >
+    <span class="h-3 w-3 rounded-full bg-[#f59e0b] ring-2 ring-white/10"></span>
+    <span class="hidden sm:inline">Chalkboard</span>
+  </button>
+
+  <button
+    data-theme-set="minimalist"
+    class="theme-btn flex items-center gap-2 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-white/5 active:scale-95"
+    title="Gridiron Minimalist"
+  >
+    <span class="h-3 w-3 rounded-full bg-[#b91c1c] ring-2 ring-white/10"></span>
+    <span class="hidden sm:inline">Minimalist</span>
+  </button>
+</div>
+
+<style>
+  @reference "../styles/global.css";
+
+  .theme-btn.active {
+    @apply bg-white/10 ring-1 ring-white/20;
+  }
+</style>
+
+<script>
+  function updateActiveButton(theme: string) {
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      if (btn.getAttribute('data-theme-set') === theme) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  function setTheme(theme: string) {
+    const html = document.documentElement;
+    const themeClasses = ['theme-modern', 'theme-chalkboard', 'theme-minimalist'];
+
+    html.classList.remove(...themeClasses);
+    html.classList.add(`theme-${theme}`);
+    localStorage.setItem('playbook-theme', theme);
+
+    updateActiveButton(theme);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('theme', theme);
+    window.history.replaceState({}, '', url);
+  }
+
+  // Initialize
+  const savedTheme = localStorage.getItem('playbook-theme') || 'modern';
+  const urlTheme = new URLSearchParams(window.location.search).get('theme');
+  const currentTheme = urlTheme || savedTheme;
+  updateActiveButton(currentTheme);
+
+  document.querySelectorAll('[data-theme-set]').forEach(button => {
+    button.addEventListener('click', () => {
+      const theme = button.getAttribute('data-theme-set');
+      if (theme) setTheme(theme);
+    });
+  });
+</script>

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 
 interface Props {
   title?: string;
@@ -35,6 +36,26 @@ const resolvedTheme = (themeParam && themeMap[themeParam]) || theme;
     />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <script is:inline>
+      // Apply theme immediately to prevent flash
+      const savedTheme = localStorage.getItem('playbook-theme');
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlTheme = urlParams.get('theme');
+
+      const themeToApply = urlTheme || savedTheme;
+
+      if (themeToApply) {
+        const themeMap = {
+          modern: 'theme-modern',
+          chalkboard: 'theme-chalkboard',
+          minimalist: 'theme-minimalist'
+        };
+        const themeClass = themeMap[themeToApply] || themeToApply;
+        if (Object.values(themeMap).includes(themeClass)) {
+          document.documentElement.className = themeClass;
+        }
+      }
+    </script>
   </head>
   <body>
     <div class="min-h-screen flex flex-col">
@@ -52,5 +73,6 @@ const resolvedTheme = (themeParam && themeMap[themeParam]) || theme;
         </div>
       </footer>
     </div>
+    <ThemeSwitcher />
   </body>
 </html>
