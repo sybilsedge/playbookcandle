@@ -10,7 +10,7 @@
   --color-accent: #7ee672;
   --color-line: #374151;
   --font-heading: "Tourney";
-  --font-body: "Inter";
+  --font-body: "Oswald";
 }
 
 .theme-chalkboard {
@@ -31,7 +31,7 @@
   --color-muted: #d6d3d1;
   --color-accent: #841515;
   --color-line: #78716c;
-  --font-heading: "Gidugu";
+  --font-heading: "Playfair Display";
   --font-body: "Overpass";
 }
 
