@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
+
+:root,
+.theme-modern {
+  --color-bg: #0d1117;
+  --color-surface: #111827;
+  --color-text: #e5e7eb;
+  --color-muted: #9ca3af;
+  --color-accent: #39ff14;
+  --color-line: #374151;
+  --font-heading: "JetBrains Mono";
+  --font-body: "Inter";
+}
+
+.theme-chalkboard {
+  --color-bg: #1f3328;
+  --color-surface: #18291f;
+  --color-text: #f4f4f2;
+  --color-muted: #d1d5db;
+  --color-accent: #f59e0b;
+  --color-line: #9ca3af;
+  --font-heading: "Barlow Condensed";
+  --font-body: "Inter";
+}
+
+.theme-minimalist {
+  --color-bg: #181615;
+  --color-surface: #22201e;
+  --color-text: #f5f2ed;
+  --color-muted: #d6d3d1;
+  --color-accent: #b91c1c;
+  --color-line: #78716c;
+  --font-heading: "Space Grotesk";
+  --font-body: "Inter";
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  @apply bg-bg text-text font-body antialiased;
+}
+
+.playbook-line {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 18px,
+    var(--color-line) 18px,
+    var(--color-line) 19px
+  );
+}
